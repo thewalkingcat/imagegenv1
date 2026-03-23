@@ -7,8 +7,8 @@ FROM runpod/worker-comfyui:5.8.5-base
 
 # download models into comfyui
 RUN comfy model download --url "https://civitai.com/api/download/models/2578565?type=Model&format=SafeTensor&size=pruned&fp=fp16" --set-civitai-api-token "00d4f9d5da710441e457df098bcb0386" --relative-path "models/checkpoints" --filename "Jankuv6.9.safetensors"
-RUN comfy model download --url "https://civitai.com/api/download/models/2782261?type=Model&format=SafeTensor&size=full&fp=bf16" --set-civitai-api-token "00d4f9d5da710441e457df098bcb0386" --relative-path "models/checkpoints" --filename "animaYumev0.25.safetensors"
-RUN comfy model download --url "https://civitai.com/api/download/models/2672638?type=Model&format=SafeTensor&size=full&fp=fp16" --set-civitai-api-token "00d4f9d5da710441e457df098bcb0386" --relative-path "models/checkpoints" --filename "AnimayhemV3.0.safetensors"
+RUN comfy model download --url "https://civitai.com/api/download/models/2485296?type=Model&format=SafeTensor&size=full&fp=bf16" --set-civitai-api-token "00d4f9d5da710441e457df098bcb0386" --relative-path "models/checkpoints" --filename "NetaYumeLumina4.0.safetensors"
+# RUN comfy model download --url "https://civitai.com/api/download/models/2672638?type=Model&format=SafeTensor&size=full&fp=fp16" --set-civitai-api-token "00d4f9d5da710441e457df098bcb0386" --relative-path "models/checkpoints" --filename "AnimayhemV3.0.safetensors"
 
 # copy all input data (like images or videos) into comfyui (uncomment and adjust if needed)
 # COPY input/ /comfyui/input/

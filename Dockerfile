@@ -6,8 +6,8 @@ FROM runpod/worker-comfyui:5.8.5-base
 # Could not resolve unknown_registry node: CheckpointLoaderSimple (no aux_id provided in workflow metadata)
 
 # download models into comfyui
-RUN comfy model download --url "https://civitai.red/api/download/models/2792027?fileId=2678154" --set-civitai-api-token "00d4f9d5da710441e457df098bcb0386" --relative-path "models/checkpoints" --filename "ZanimeBase.safetensors"
+RUN comfy model download --url "https://civitai.red/api/download/models/2792027?type=Model&format=SafeTensor&size=full&fp=bf16" --set-civitai-api-token "00d4f9d5da710441e457df098bcb0386" --relative-path "models/checkpoints" --filename "ZanimeBase.safetensors"
 RUN comfy model download --url "https://civitai.com/api/download/models/2485296?type=Model&format=SafeTensor&size=full&fp=bf16" --set-civitai-api-token "00d4f9d5da710441e457df098bcb0386" --relative-path "models/checkpoints" --filename "NetaYumeLuminaV4.0.safetensors"
-RUN comfy model download --url "https://civitai.red/api/download/models/2940478?fileId=2819621" --set-civitai-api-token "00d4f9d5da710441e457df098bcb0386" --relative-path "models/checkpoints" --filename "Novacancy.safetensors"
+RUN comfy model download --url "https://civitai.red/api/download/models/2940478?type=Model&format=SafeTensor&size=full&fp=bf16" --set-civitai-api-token "00d4f9d5da710441e457df098bcb0386" --relative-path "models/checkpoints" --filename "Novacancy.safetensors"
 # copy all input data (like images or videos) into comfyui (uncomment and adjust if needed)
 # COPY input/ /comfyui/input/

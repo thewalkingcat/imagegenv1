@@ -12,6 +12,6 @@ RUN comfy model download --url "https://civitai.com/api/download/models/2485296?
 RUN comfy model download --url "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-turbo-v1.0.safetensors" --relative-path "models/checkpoints" --filename "anima-turbo-v1.0.safetensors"
 RUN comfy model download --url "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors" --relative-path "models/vae" --filename "qwen_image_vae.safetensors"
 RUN comfy model download --url "https://huggingface.co/Kim2091/AnimeSharp/resolve/main/4x-AnimeSharp.pth" --relative-path "models/upscale_models" --filename "4x-AnimeSharp.pth"
-RUN comfy model download --url "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors" --relative-path "models/text encoders" --filename "qwen_3_06b_base.safetensors"
+RUN comfy model download --url "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors" --relative-path "models/text_encoders" --filename "qwen_3_06b_base.safetensors"
 # copy all input data (like images or videos) into comfyui (uncomment and adjust if needed)
 # COPY input/ /comfyui/input/

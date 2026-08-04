@@ -15,9 +15,3 @@ RUN comfy model download --url "https://huggingface.co/Kim2091/AnimeSharp/resolv
 RUN comfy model download --url "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors" --relative-path "models/text encoders" --filename "qwen_3_06b_base.safetensors"
 # copy all input data (like images or videos) into comfyui (uncomment and adjust if needed)
 # COPY input/ /comfyui/input/
-     && \
-     && \
-    
-
-CMD ["python", "-u", "/handler.py"]
-

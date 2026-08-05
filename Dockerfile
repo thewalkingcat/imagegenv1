@@ -6,7 +6,7 @@ FROM runpod/worker-comfyui:5.8.5-base
 # Could not resolve unknown_registry node: CheckpointLoaderSimple (no aux_id provided in workflow metadata)
 
 # download models into comfyui
-RUN comfy model download --url "https://civitai.com/api/download/models/1277670?type=Model&format=SafeTensor&size=full&fp=fp16" --set-civitai-api-token "00d4f9d5da710441e457df098bcb0386" --relative-path "models/checkpoints" --filename "Jankuv7.Safetensors"
+# RUN comfy model download --url "https://civitai.com/api/download/models/1277670?type=Model&format=SafeTensor&size=full&fp=fp16" --set-civitai-api-token "00d4f9d5da710441e457df098bcb0386" --relative-path "models/checkpoints" --filename "Jankuv7.Safetensors"
 RUN comfy model download --url "https://civitai.com/api/download/models/2485296?type=Model&format=SafeTensor&size=full&fp=bf16" --set-civitai-api-token "00d4f9d5da710441e457df098bcb0386" --relative-path "models/checkpoints" --filename "NetaYumeLuminaV4.0.safetensors"
 RUN comfy model download --url "https://civitai.com/api/download/models/2726029?type=Model&format=SafeTensor&size=full&fp=bf16" --set-civitai-api-token "00d4f9d5da710441e457df098bcb0386" --relative-path "models/checkpoints" --filename "krea2.safetensors"
 RUN comfy model download --url "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-turbo-v1.0.safetensors" --relative-path "models/diffusion_models" --filename "anima-turbo-v1.0.safetensors"

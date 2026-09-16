@@ -1,4 +1,4 @@
-FROM runpod/worker-comfyui:5.8.5-base
+FROM runpod/worker-comfyui:5.10.0-base
 
 # Fix extra_model_paths.yaml to include diffusion_models and text_encoders
 RUN printf 'runpod_worker_comfy:\n\

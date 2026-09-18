@@ -1,17 +1,17 @@
-# clean base image containing only comfyui, comfy-cli and comfyui-manager
-FROM runpod/worker-comfyui:5.8.5-base
+FROM runpod/worker-comfyui:5.10.0-base
 
-# install custom nodes into comfyui (first node with --mode remote to fetch updated cache)
-# No registry-verified custom nodes found.
-# Could not resolve unknown_registry node: CheckpointLoaderSimple (no aux_id provided in workflow metadata)
+# 1. Ensure extra_model_paths.yaml maps all required folders to the network volume
+RUN printf 'runpod_worker_comfy:\n\
+  base_path: /runpod-volume\n\
+  checkpoints: models/checkpoints/\n\
+  clip: models/clip/\n\
+  text_encoders: models/text_encoders/\n\
+  diffusion_models: models/diffusion_models/\n\
+  unet: models/unet/\n\
+  vae: models/vae/\n\
+  upscale_models: models/upscale_models/\n\
+  loras: models/loras/\n' > /comfyui/extra_model_paths.yaml
 
-# download models into comfyui
-# RUN comfy model download --url "https://civitai.red/api/download/models/2967640?fileId=2847103&token=00d4f9d5da710441e457df098bcb0386" --relative-path "models/diffusion_models" --filename "Janima.Safetensors"
-# RUN comfy model download --url "https://civitai.red/api/download/models/2485296?fileId=2373765&token=00d4f9d5da710441e457df098bcb0386" --relative-path "models/diffusion_models" --filename "NetaYumeLuminaV4.0.safetensors"
-# RUN comfy model download --url "https://civitai.red/api/download/models/3065644?fileId=2944325&token=00d4f9d5da710441e457df098bcb0386" --relative-path "models/diffusion_models" --filename "AnimaYumev10.safetensors"
-RUN comfy model download --url "https://civitai.red/api/download/models/3136969?fileId=3017009&token=00d4f9d5da710441e457df098bcb0386" --relative-path "models/diffusion_models" --filename "waianimaturbo.safetensors"
-RUN comfy model download --url "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors" --relative-path "models/vae" --filename "qwen_image_vae.safetensors"
-RUN comfy model download --url "https://huggingface.co/Kim2091/AnimeSharp/resolve/main/4x-AnimeSharp.pth" --relative-path "models/upscale_models" --filename "4x-AnimeSharp.pth"
-RUN comfy model download --url "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors" --relative-path "models/text_encoders" --filename "qwen_3_06b_base.safetensors"
-# copy all input data (like images or videos) into comfyui (uncomment and adjust if needed) 2485296
-# COPY input/ /comfyui/input/
+# 2. Performance flags to speed up inference and optimize VRAM usage
+ENV TORCH_CUDA_ARCH_LIST="8.0;8.6;8.9;9.0"
+ENV PYTHONUNBUFFERED=1
